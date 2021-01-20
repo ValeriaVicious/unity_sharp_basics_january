@@ -2,17 +2,22 @@
 
 namespace GeekBrains
 {
-    public sealed class SavedData<T>
+    public sealed class SavedData<T> : BaseExample<T>
     {
         #region Fields
 
         public int CountBonuses;
-        public T IdPlayer;
 
         #endregion
 
 
-        #region Methods
+        #region ClassLifeCycles
+
+        public SavedData(T id) : base(id)
+        {
+            IdPlayer = id;
+        }
+
         #endregion
     }
 }
