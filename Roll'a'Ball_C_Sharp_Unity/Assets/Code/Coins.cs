@@ -9,9 +9,11 @@ namespace GeekBrains
         #region Fields
 
         private Material _material;
+        private DisplayBonuses _displayBonuses;
         private float _lengthFlay;
         private float _minRange = 1.0f;
         private float _maxRange = 5.0f;
+        private int _valueOfBonus = 5;
 
         #endregion
 
@@ -22,6 +24,7 @@ namespace GeekBrains
         {
             _material = GetComponent<Renderer>().material;
             _lengthFlay = Random.Range(_minRange, _maxRange);
+            _displayBonuses = new DisplayBonuses();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -29,6 +32,7 @@ namespace GeekBrains
             if (other.CompareTag(PlayerTag))
             {
                 Log("I'm here");
+                Interaction();
                 Destroy(gameObject);
             }
         }
@@ -52,7 +56,7 @@ namespace GeekBrains
 
         protected override void Interaction()
         {
-            throw new System.NotImplementedException();
+            _displayBonuses.Display(_valueOfBonus);
         }
 
         #endregion
