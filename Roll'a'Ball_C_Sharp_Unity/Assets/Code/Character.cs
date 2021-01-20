@@ -11,5 +11,10 @@ namespace GeekBrains
 
         }
 
+        public virtual void Jump()
+        {
+
+        }
+
     }
 }
