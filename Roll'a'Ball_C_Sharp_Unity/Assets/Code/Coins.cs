@@ -9,7 +9,6 @@ namespace GeekBrains
         #region Fields
 
         private Material _material;
-        private string _playerTag = "Player";
         private float _lengthFlay;
         private float _minRange = 1.0f;
         private float _maxRange = 5.0f;
@@ -27,7 +26,7 @@ namespace GeekBrains
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(_playerTag))
+            if (other.CompareTag(PlayerTag))
             {
                 Log("I'm here");
                 Destroy(gameObject);
@@ -49,6 +48,11 @@ namespace GeekBrains
         {
             _material.color = new Color(_material.color.r, _material.color.g,
                 _material.color.b, Mathf.PingPong(Time.time, 1.0f));
+        }
+
+        protected override void Interaction()
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion

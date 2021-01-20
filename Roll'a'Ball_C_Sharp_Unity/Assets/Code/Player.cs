@@ -15,7 +15,7 @@ namespace GeekBrains
             }
             set
             {
-                _speed = value;
+                _speed *= value;
             }
         }
 

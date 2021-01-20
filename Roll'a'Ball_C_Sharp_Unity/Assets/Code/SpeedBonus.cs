@@ -10,7 +10,6 @@ namespace GeekBrains
         #region Fields
 
         private Player _player;
-        private string _playerTag = "Player";
         private float _speedRotation;
         private float _lengthFlay;
         private float _speedMax = 6.0f;
@@ -33,7 +32,7 @@ namespace GeekBrains
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag(_playerTag))
+            if (other.gameObject.CompareTag(PlayerTag))
             {
                 Log("Woohoo");
                 Interaction();
@@ -46,19 +45,20 @@ namespace GeekBrains
 
         #region Methods
 
-        public override void Interaction()
+        protected override void Interaction()
         {
             _player.Speed = _speedMax;
         }
 
         public void RotationObject()
         {
-            throw new System.NotImplementedException();
+            transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation), Space.World);
         }
 
         public void Flay()
         {
-            throw new System.NotImplementedException();
+            transform.localPosition = new Vector3(transform.localPosition.x,
+                Mathf.PingPong(Time.time, _lengthFlay), transform.localPosition.z);
         }
 
         #endregion
