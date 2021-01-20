@@ -5,6 +5,23 @@ namespace GeekBrains
 {
     public class Player : Character
     {
+        #region Properties
+
+        public float Speed
+        {
+            get
+            {
+                return _speed;
+            }
+            set
+            {
+                _speed = value;
+            }
+        }
+
+        #endregion
+
+
         #region Fields
 
         private Rigidbody _rigidbody;

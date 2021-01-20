@@ -6,5 +6,9 @@ namespace GeekBrains
 {
     public class InteractiveObjects : MonoBehaviour
     {
+        public virtual void Interaction()
+        {
+
+        }
     }
 }
