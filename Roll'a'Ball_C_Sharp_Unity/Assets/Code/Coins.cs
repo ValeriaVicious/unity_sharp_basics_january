@@ -11,9 +11,9 @@ namespace GeekBrains
         private Material _material;
         private DisplayBonuses _displayBonuses;
         private float _lengthFlay;
-        private float _minRange = 1.0f;
-        private float _maxRange = 5.0f;
-        private int _valueOfBonus = 5;
+        private float _minRange = 0.5f;
+        private float _maxRange = 2.0f;
+        private int _valueOfBonus = 1;
 
         #endregion
 
@@ -34,6 +34,7 @@ namespace GeekBrains
                 Log("I'm here");
                 Interaction();
                 Destroy(gameObject);
+                _valueOfBonus++;
             }
         }
 
