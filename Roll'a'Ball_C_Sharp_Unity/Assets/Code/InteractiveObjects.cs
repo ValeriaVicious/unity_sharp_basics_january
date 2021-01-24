@@ -8,6 +8,7 @@ namespace GeekBrains
     {
         #region Fields
 
+        protected Color _color;
         public const string PlayerTag = "Player";
         public bool IsInteractable { get; } = true;
 
@@ -36,9 +37,10 @@ namespace GeekBrains
 
         public void Action()
         {
-            if(TryGetComponent(out Renderer renderer))
+            _color = Random.ColorHSV();
+            if (TryGetComponent(out Renderer renderer))
             {
-                renderer.material.color = Random.ColorHSV();
+                renderer.material.color = _color;
             }
         }
 

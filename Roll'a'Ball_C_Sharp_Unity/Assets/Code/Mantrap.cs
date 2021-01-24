@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Debug;
 
@@ -13,9 +14,15 @@ namespace GeekBrains
         private float _lengthFlay;
         private float _minFlayRange = 1.0f;
         private float _maxFlayRange = 5.0f;
-
+        private event EventHandler<Color> _caughtPlayerColor;
+        
         public delegate void CaughtPlayerChange(object value);
         public event CaughtPlayerChange CaughtPlayer;
+        public event EventHandler<Color> CaughtPlayerColor
+        {
+            add { _caughtPlayerColor += value; }
+            remove { _caughtPlayerColor -= value; }
+        }
 
         #endregion
 
@@ -25,7 +32,7 @@ namespace GeekBrains
         private void Awake()
         {
             _material = GetComponent<Renderer>().material;
-            _lengthFlay = Random.Range(_minFlayRange, _maxFlayRange);
+            _lengthFlay = UnityEngine.Random.Range(_minFlayRange, _maxFlayRange);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -56,7 +63,7 @@ namespace GeekBrains
 
         protected override void Interaction()
         {
-            CaughtPlayer?.Invoke(this);
+            _caughtPlayerColor?.Invoke(this, _color);
         }
 
         #endregion
