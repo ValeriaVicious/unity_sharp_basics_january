@@ -14,6 +14,9 @@ namespace GeekBrains
         private float _minFlayRange = 1.0f;
         private float _maxFlayRange = 5.0f;
 
+        public delegate void CaughtPlayerChange(object value);
+        public event CaughtPlayerChange CaughtPlayer;
+
         #endregion
 
 
@@ -53,7 +56,7 @@ namespace GeekBrains
 
         protected override void Interaction()
         {
-            
+            CaughtPlayer?.Invoke(this);
         }
 
         #endregion

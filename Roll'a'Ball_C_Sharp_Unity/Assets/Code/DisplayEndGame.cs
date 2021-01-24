@@ -25,7 +25,7 @@ namespace GeekBrains
 
         #region Methods
 
-        public void GameOver()
+        public void GameOver(object obj)
         {
             _finishGameLabel.text = "Game over!";
         }
