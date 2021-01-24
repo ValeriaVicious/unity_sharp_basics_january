@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using System.Drawing;
+using UnityEngine.UI;
 
 
 namespace GeekBrains
@@ -25,9 +26,9 @@ namespace GeekBrains
 
         #region Methods
 
-        public void GameOver(object obj)
+        public void GameOver(object obj, Color color)
         {
-            _finishGameLabel.text = "Game over!";
+            _finishGameLabel.text = $"Game over! You were caught {nameof(obj)} color is {color}";
         }
 
         #endregion
