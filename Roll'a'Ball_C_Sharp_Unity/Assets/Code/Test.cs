@@ -11,6 +11,13 @@ namespace GeekBrains
             BaseExample<string> data = new BaseExample<string>("userName_0");
             BaseExample<Guid> dataGuid = new SavedData<int, Guid, object>(Guid.NewGuid());
             SavedData<int, Guid, object> dataGuidTwo = new SavedData<int, Guid, object>(Guid.NewGuid());
+
+            var interactableObject = new ListInteractableObject();
+
+            foreach (var item in interactableObject)
+            {
+                print(item);
+            }
         }
     }
 }
