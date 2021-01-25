@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 
@@ -17,6 +18,15 @@ namespace GeekBrains
             foreach (var item in interactableObject)
             {
                 print(item);
+            }
+
+            var speedBonusComparer = new SpeedBonusComparer();
+            var speedBonusObjects = FindObjectsOfType<SpeedBonus>().ToList();
+            speedBonusObjects.Sort(speedBonusComparer);
+
+            foreach (var item in speedBonusObjects)
+            {
+                print($"{item.name} - {item.Point}");
             }
         }
     }

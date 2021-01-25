@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System;
+using Object = UnityEngine.Object;
 
 
 namespace GeekBrains
@@ -20,6 +21,7 @@ namespace GeekBrains
         public ListInteractableObject()
         {
             _interactiveObjects = Object.FindObjectsOfType<InteractiveObjects>();
+            Array.Sort(_interactiveObjects);
         }
 
         #endregion

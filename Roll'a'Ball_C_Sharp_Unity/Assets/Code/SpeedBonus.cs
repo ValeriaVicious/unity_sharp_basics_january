@@ -9,6 +9,8 @@ namespace GeekBrains
 
         #region Fields
 
+        public int Point;
+
         private Player _player;
         private float _speedRotation;
         private float _lengthFlay;

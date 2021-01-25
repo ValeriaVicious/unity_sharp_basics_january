@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 
 namespace GeekBrains
 {
-    public abstract class InteractiveObjects : MonoBehaviour, IInteractable
+    public abstract class InteractiveObjects : MonoBehaviour, IInteractable,IComparable<InteractiveObjects>
     {
         #region Fields
 
@@ -33,6 +34,9 @@ namespace GeekBrains
 
         #endregion
 
+
+        #region Methods
+
         protected abstract void Interaction();
 
         public void Action()
@@ -44,5 +48,11 @@ namespace GeekBrains
             }
         }
 
+        public int CompareTo(InteractiveObjects other)
+        {
+            return name.CompareTo(other.name);
+        }
+
+        #endregion
     }
 }
