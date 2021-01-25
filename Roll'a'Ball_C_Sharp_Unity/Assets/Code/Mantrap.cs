@@ -14,14 +14,13 @@ namespace GeekBrains
         private float _lengthFlay;
         private float _minFlayRange = 1.0f;
         private float _maxFlayRange = 5.0f;
-        private event EventHandler<Color> _caughtPlayerColor;
+        private event EventHandler<CaughtPlayerEventArgs> _caughtPlayer;
 
         public delegate void CaughtPlayerChange(object value);
-        public event CaughtPlayerChange CaughtPlayer;
-        public event EventHandler<Color> CaughtPlayerColor
+        public event EventHandler<CaughtPlayerEventArgs> CaughtPlayer
         {
-            add { _caughtPlayerColor += value; }
-            remove { _caughtPlayerColor -= value; }
+            add { _caughtPlayer += value; }
+            remove { _caughtPlayer -= value; }
         }
 
         #endregion
@@ -63,7 +62,7 @@ namespace GeekBrains
 
         protected override void Interaction()
         {
-            _caughtPlayerColor?.Invoke(this, _color);
+            _caughtPlayer?.Invoke(this, new CaughtPlayerEventArgs(_color));
         }
 
         #endregion

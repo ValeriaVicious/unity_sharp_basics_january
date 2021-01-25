@@ -35,7 +35,7 @@ namespace GeekBrains
             }
         }
 
-        private void CaughtPlayer(object value)
+        private void CaughtPlayer(object value, CaughtPlayerEventArgs args)
         {
             Time.timeScale = 0.0f;
         }
