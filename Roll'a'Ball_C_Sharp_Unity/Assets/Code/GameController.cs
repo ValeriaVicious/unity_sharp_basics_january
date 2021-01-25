@@ -11,6 +11,7 @@ namespace GeekBrains
 
         [SerializeField] private Text _finishGameLabel;
         private InteractiveObjects[] _interactiveObjects;
+        private ListInteractableObject _interactableObject;
         private DisplayEndGame _displayEnd;
 
         #endregion
@@ -21,19 +22,20 @@ namespace GeekBrains
         private void Awake()
         {
             _interactiveObjects = FindObjectsOfType<InteractiveObjects>();
+            _interactableObject = new ListInteractableObject();
             _displayEnd = new DisplayEndGame(_finishGameLabel);
 
-            foreach (var item in _interactiveObjects)
+            foreach (var item in _interactableObject)
             {
-                if(item is Mantrap mantrap)
+                if (item is Mantrap mantrap)
                 {
                     mantrap.CaughtPlayer += CaughtPlayer;
-                    mantrap.CaughtPlayer += _displayEnd.GameOver;//no overloaded method
+                    mantrap.CaughtPlayer += _displayEnd.GameOver;
                 }
             }
         }
 
-        private void CaughtPlayer(object value)
+        private void CaughtPlayer()
         {
             Time.timeScale = 0.0f;
         }
@@ -75,14 +77,14 @@ namespace GeekBrains
         {
             foreach (var item in _interactiveObjects)
             {
-                if(item is InteractiveObjects interactiveObject)
+                if (item is InteractiveObjects interactiveObject)
                 {
-                    if(item is Mantrap mantrap)
+                    Destroy(interactiveObject.gameObject);
+                    if (item is Mantrap mantrap)
                     {
                         mantrap.CaughtPlayer -= CaughtPlayer;
-                        mantrap.CaughtPlayer -= _displayEnd.GameOver;//no overloaded method
+                        mantrap.CaughtPlayer -= _displayEnd.GameOver;
                     }
-                    Destroy(interactiveObject.gameObject);
                 }
             }
         }

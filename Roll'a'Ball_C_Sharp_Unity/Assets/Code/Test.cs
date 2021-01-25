@@ -28,6 +28,7 @@ namespace GeekBrains
             {
                 print($"{item.name} - {item.Point}");
             }
+
         }
     }
 }

@@ -26,9 +26,9 @@ namespace GeekBrains
 
         #region Methods
 
-        public void GameOver(object obj, CaughtPlayerEventArgs args)
+        public void GameOver()
         {
-            _finishGameLabel.text = $"Game over! You were caught {nameof(obj)} color is {args.Color}";
+            _finishGameLabel.text = $"Game over! You were caught.";
         }
 
         #endregion
