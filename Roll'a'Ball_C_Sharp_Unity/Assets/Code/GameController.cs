@@ -35,7 +35,7 @@ namespace GeekBrains
             }
         }
 
-        private void CaughtPlayer()
+        private void CaughtPlayer(object value)
         {
             Time.timeScale = 0.0f;
         }
@@ -79,12 +79,12 @@ namespace GeekBrains
             {
                 if (item is InteractiveObjects interactiveObject)
                 {
-                    Destroy(interactiveObject.gameObject);
                     if (item is Mantrap mantrap)
                     {
                         mantrap.CaughtPlayer -= CaughtPlayer;
                         mantrap.CaughtPlayer -= _displayEnd.GameOver;
                     }
+                    Destroy(interactiveObject.gameObject);
                 }
             }
         }

@@ -24,7 +24,7 @@ namespace GeekBrains
 
         private void OnTriggerEnter(Collider other)
         {
-            if(!IsInteractable || other.CompareTag(PlayerTag))
+            if(!IsInteractable || !other.CompareTag(PlayerTag))
             {
                 return;
             }
