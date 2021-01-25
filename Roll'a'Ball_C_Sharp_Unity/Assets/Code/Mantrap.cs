@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
+using Random = UnityEngine.Random;
 using static UnityEngine.Debug;
 
 
@@ -32,7 +32,7 @@ namespace GeekBrains
         private void Awake()
         {
             _material = GetComponent<Renderer>().material;
-            _lengthFlay = UnityEngine.Random.Range(_minFlayRange, _maxFlayRange);
+            _lengthFlay = Random.Range(_minFlayRange, _maxFlayRange);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -63,7 +63,9 @@ namespace GeekBrains
 
         protected override void Interaction()
         {
-            _caughtPlayerColor?.Invoke(this, _color);
+            _caughtPlayerColor?.Invoke(this, new CaughtPlayerEventArgs(_color));//not working because cannot be converted from 
+            //GeekBrains.CaughtPlayerEventArgs" to "UnityEngine.Color"
+
         }
 
         #endregion

@@ -28,7 +28,7 @@ namespace GeekBrains
                 if(item is Mantrap mantrap)
                 {
                     mantrap.CaughtPlayer += CaughtPlayer;
-                    mantrap.CaughtPlayer += _displayEnd.GameOver;
+                    mantrap.CaughtPlayer += _displayEnd.GameOver;//no overloaded method
                 }
             }
         }
@@ -80,9 +80,9 @@ namespace GeekBrains
                     if(item is Mantrap mantrap)
                     {
                         mantrap.CaughtPlayer -= CaughtPlayer;
-                        mantrap.CaughtPlayer -= _displayEnd.GameOver;
+                        mantrap.CaughtPlayer -= _displayEnd.GameOver;//no overloaded method
                     }
-                    Destroy(item.gameObject);
+                    Destroy(interactiveObject.gameObject);
                 }
             }
         }
