@@ -15,9 +15,10 @@ namespace GeekBrains
 
         #region ClassLifeCycles
 
-        public DisplayEndGame()
+        public DisplayEndGame(GameObject endGame)
         {
-
+            _finishGameLabel = endGame.GetComponentInChildren<Text>();
+            _finishGameLabel.text = string.Empty;
         }
 
         #endregion

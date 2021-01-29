@@ -23,8 +23,6 @@ namespace GeekBrains
         private void Awake()
         {
             _interactiveObject = new ListExecuteObject();
-            _displayEndGame = new DisplayEndGame();
-            _displayBonuses = new DisplayBonuses();
 
             var reference = new Reference();
             _cameraController = new CameraController(reference.PlayerBall.transform,
@@ -33,6 +31,9 @@ namespace GeekBrains
 
             _inputController = new InputController(reference.PlayerBall);
             _interactiveObject.AddExecuteObject(_inputController);
+
+            _displayEndGame = new DisplayEndGame(reference.EndGame);
+            _displayBonuses = new DisplayBonuses(reference.Coin);
 
             foreach (var item in _interactiveObject)
             {

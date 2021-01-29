@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace GeekBrains
@@ -12,13 +13,28 @@ namespace GeekBrains
         private GameObject _coin;
         private GameObject _endGame;
         private Canvas _canvas;
+        private Button _restartButton;
         private string _pathCoin = "UI/Bonuse";
         private string _pathEndGame = "UI/EndGame";
+        private string _pathButton = "UI/RestartButton";
 
         #endregion
 
 
         #region Methods
+
+        public Button RestartButton
+        {
+            get
+            {
+                if (_restartButton==null)
+                {
+                    var gameObject = Resources.Load<Button>(_pathButton);
+                    _restartButton = Object.Instantiate(gameObject, Canvas.transform);
+                }
+                return _restartButton;
+            }
+        }
 
         public Canvas Canvas
         {
