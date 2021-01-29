@@ -14,6 +14,7 @@ namespace GeekBrains
         public event Action<int> OnPointChange = delegate (int i) { };
         public int Point;
 
+        private Player _player;
         private Material _material;
         private float _speedRotation;
         private float _lengthFlay;
@@ -30,6 +31,7 @@ namespace GeekBrains
 
         private void Awake()
         {
+            _player = new Player();
             _material = GetComponent<Renderer>().material;
             _lengthFlay = Range(_minFlayRange, _maxFlayRange);
             _speedRotation = Range(_minRotationRange, _maxRotationRange);
@@ -41,7 +43,7 @@ namespace GeekBrains
             {
                 Log("Woohoo");
                 Interaction();
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
 
@@ -53,6 +55,7 @@ namespace GeekBrains
         protected override void Interaction()
         {
             OnPointChange.Invoke(Point);
+            _player.Speed += _speedMax;
         }
 
         public void RotationObject()

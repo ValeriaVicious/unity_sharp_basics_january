@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using static UnityEngine.Debug;
+using static UnityEngine.Random;
 
 
 namespace GeekBrains
@@ -7,6 +9,9 @@ namespace GeekBrains
     public sealed class Coins : InteractiveObjects, IFlay, IFlicker
     {
         #region Fields
+
+        public int Point;
+        public event Action<int> OnPointChange = delegate (int i) { };
 
         private Material _material;
         private DisplayBonuses _displayBonuses;
@@ -23,7 +28,7 @@ namespace GeekBrains
         private void Awake()
         {
             _material = GetComponent<Renderer>().material;
-            _lengthFlay = Random.Range(_minRange, _maxRange);
+            _lengthFlay = Range(_minRange, _maxRange);
             _displayBonuses = new DisplayBonuses();
         }
 
@@ -57,11 +62,17 @@ namespace GeekBrains
         protected override void Interaction()
         {
             _displayBonuses.Display(_valueOfBonus);
+            OnPointChange.Invoke(Point);
         }
 
         public override void Execute()
         {
-            throw new System.NotImplementedException();
+            if (!IsInterectable)
+            {
+                return;
+            }
+            Flicker();
+            Flay();
         }
 
         #endregion

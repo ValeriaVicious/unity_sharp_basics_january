@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 namespace GeekBrains
 {
-    public sealed class DisplayBonuses
+    public sealed class DisplayEndGame
     {
         #region Fields
 
-        private Text _text;
+        private Text _finishGameLabel;
 
         #endregion
 
 
         #region ClassLifeCycles
 
-        public DisplayBonuses()
+        public DisplayEndGame()
         {
 
         }
@@ -25,9 +25,9 @@ namespace GeekBrains
 
         #region Methods
 
-        public void Display(int value)
+        public void GameOver(string name, Color color)
         {
-            _text.text = $"Собрано: {value}";
+            _finishGameLabel.text = $"Game Over! {name} {color}";
         }
 
         #endregion
