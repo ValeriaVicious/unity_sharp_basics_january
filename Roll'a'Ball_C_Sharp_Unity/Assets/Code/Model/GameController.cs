@@ -12,6 +12,7 @@ namespace GeekBrains
         private DisplayEndGame _displayEndGame;
         private DisplayBonuses _displayBonuses;
         private CameraController _cameraController;
+        private InputController _inputController;
         private int _countBonuses;
 
         #endregion
@@ -24,10 +25,14 @@ namespace GeekBrains
             _interactiveObject = new ListExecuteObject();
             _displayEndGame = new DisplayEndGame();
             _displayBonuses = new DisplayBonuses();
+
             var reference = new Reference();
             _cameraController = new CameraController(reference.PlayerBall.transform,
                 reference.MainCamera.transform);
             _interactiveObject.AddExecuteObject(_cameraController);
+
+            _inputController = new InputController(reference.PlayerBall);
+            _interactiveObject.AddExecuteObject(_inputController);
 
             foreach (var item in _interactiveObject)
             {
