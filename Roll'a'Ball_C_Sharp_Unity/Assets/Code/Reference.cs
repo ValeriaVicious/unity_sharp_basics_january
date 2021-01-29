@@ -9,11 +9,53 @@ namespace GeekBrains
 
         private PlayerBall _playerBall;
         private Camera _mainCamera;
+        private GameObject _coin;
+        private GameObject _endGame;
+        private Canvas _canvas;
+        private string _pathCoin = "UI/Bonuse";
+        private string _pathEndGame = "UI/EndGame";
 
         #endregion
 
 
         #region Methods
+
+        public Canvas Canvas
+        {
+            get
+            {
+                if(_canvas == null)
+                {
+                    _canvas = Object.FindObjectOfType<Canvas>();
+                }
+                return _canvas;
+            }
+        }
+
+        public GameObject Coin
+        {
+            get
+            {
+                if(_coin == null)
+                {
+                    var gameObject = Resources.Load<GameObject>(_pathCoin);
+                    _coin = Object.Instantiate(gameObject, Canvas.transform);
+                }
+                return _coin;
+            }
+        }
+
+        public GameObject EndGame
+        {
+            get
+            {
+                if(_endGame == null)
+                {
+                    var gameObject = Resources.Load<GameObject>(_pathEndGame);
+                }
+                return _endGame;
+            }
+        }
 
         public PlayerBall PlayerBall
         {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -8,16 +9,17 @@ namespace GeekBrains
     {
         #region Fields
 
-        private Text _text;
+        private Text _coinLabel;
 
         #endregion
 
 
         #region ClassLifeCycles
 
-        public DisplayBonuses()
+        public DisplayBonuses(GameObject coin)
         {
-
+            _coinLabel = coin.GetComponentInChildren<Text>();
+            _coinLabel.text = string.Empty;
         }
 
         #endregion
@@ -27,7 +29,7 @@ namespace GeekBrains
 
         public void Display(int value)
         {
-            _text.text = $"Собрано: {value}";
+            _coinLabel.text = $"Собрано: {value}";
         }
 
         #endregion
