@@ -3,7 +3,7 @@
 
 namespace GeekBrains
 {
-    public class Player : Character
+    public abstract class PlayerBase : Character
     {
         #region Properties
 
@@ -24,9 +24,8 @@ namespace GeekBrains
 
         #region Fields
 
-        private Rigidbody _rigidbody;
-        private const string _horizontalInput = "Horizontal";
-        private const string _verticalInput = "Vertical";
+        public const string HorizontalInput = "Horizontal";
+        public const string VerticalInput = "Vertical";
         private float _speed = 3.0f;
 
         #endregion
@@ -34,19 +33,13 @@ namespace GeekBrains
 
         #region ClassLifeCycles
 
-        public Player(float speed)
+        public PlayerBase(float speed)
         {
             _speed = speed;
         }
 
-        public Player()
+        public PlayerBase()
         {
-        }
-
-        public Player(Rigidbody rigidbody, float speed)
-        {
-            _rigidbody = rigidbody;
-            _speed = speed;
         }
 
         #endregion
@@ -64,14 +57,7 @@ namespace GeekBrains
 
         #region Methods
 
-        public override void Move()
-        {
-            float moveHorizontal = Input.GetAxis(_horizontalInput);
-            float moveVertical = Input.GetAxis(_verticalInput);
-
-            Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-            _rigidbody.AddForce(movement * _speed);
-        }
+        public abstract void Move(float x, float y, float z);
 
         #endregion
     }
