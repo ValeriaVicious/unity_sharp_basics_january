@@ -31,7 +31,6 @@ namespace GeekBrains
 
         private void Awake()
         {
-            _player = new PlayerBase();
             _material = GetComponent<Renderer>().material;
             _lengthFlay = Range(_minFlayRange, _maxFlayRange);
             _speedRotation = Range(_minRotationRange, _maxRotationRange);
@@ -55,7 +54,7 @@ namespace GeekBrains
         protected override void Interaction()
         {
             OnPointChange.Invoke(Point);
-            _player.Speed += _speedMax;
+            _player.Speed = _speedMax;
         }
 
         public void RotationObject()

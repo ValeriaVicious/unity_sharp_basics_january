@@ -26,7 +26,7 @@ namespace GeekBrains
 
         public override void Move(float x, float y, float z)
         {
-            _rigidBody.AddForce(new Vector3(x, y, z) * Speed);
+            _rigidBody.AddForce(new Vector3(x,y,z) * Speed);
         }
 
         private void FixedUpdate()

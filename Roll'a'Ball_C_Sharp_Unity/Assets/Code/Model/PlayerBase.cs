@@ -15,7 +15,7 @@ namespace GeekBrains
             }
             set
             {
-                _speed *= value;
+                _speed = value;
             }
         }
 
@@ -40,16 +40,6 @@ namespace GeekBrains
 
         public PlayerBase()
         {
-        }
-
-        #endregion
-
-
-        #region UnityMethods
-
-        private void Start()
-        {
-            _rigidbody = GetComponent<Rigidbody>();
         }
 
         #endregion

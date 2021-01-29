@@ -7,8 +7,8 @@ namespace GeekBrains
     {
         #region Fields
 
-        private Camera _mainCamera;
         private PlayerBall _playerBall;
+        private Camera _mainCamera;
 
         #endregion
 
