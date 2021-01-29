@@ -4,7 +4,7 @@ using static UnityEngine.Debug;
 
 namespace GeekBrains
 {
-    public sealed class Mantrap : InteractiveObjects, IFlay, IFlicker
+    public sealed class Mantrap : InteractiveObjects, IFlay, IFlicker, IExecute
     {
         #region Fields
 
@@ -53,6 +53,11 @@ namespace GeekBrains
         protected override void Interaction()
         {
             
+        }
+
+        public override void Execute()
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion

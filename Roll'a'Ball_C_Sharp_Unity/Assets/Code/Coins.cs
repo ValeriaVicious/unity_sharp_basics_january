@@ -59,6 +59,11 @@ namespace GeekBrains
             _displayBonuses.Display(_valueOfBonus);
         }
 
+        public override void Execute()
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
     }
 }
