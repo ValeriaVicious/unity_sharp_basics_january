@@ -16,7 +16,7 @@ namespace GeekBrains
         private Button _restartButton;
         private string _pathCoin = "UI/CoinCurrent";
         private string _pathEndGame = "UI/EndGame";
-        private string _pathButton = "UI/RestartButton";
+        private string _pathButton = "UI/Restart";
 
         #endregion
 

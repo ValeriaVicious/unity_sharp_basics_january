@@ -16,6 +16,7 @@ namespace GeekBrains
         private InputController _inputController;
         private Reference _reference;
         private int _countBonuses;
+        private int _numberOfScene = 0;
 
         #endregion
 
@@ -25,18 +26,20 @@ namespace GeekBrains
         private void Awake()
         {
             _interactiveObject = new ListExecuteObject();
-            var reference = new Reference();
+            _reference = new Reference();
 
-            _displayEndGame = new DisplayEndGame(reference.EndGame);
-            _displayBonuses = new DisplayBonuses(reference.Coin);
+            _displayEndGame = new DisplayEndGame(_reference.EndGame);
+            _displayBonuses = new DisplayBonuses(_reference.Coin);
 
-            _cameraController = new CameraController(reference.PlayerBall.transform,
-                reference.MainCamera.transform);
+            _cameraController = new CameraController(_reference.PlayerBall.transform,
+                _reference.MainCamera.transform);
             _interactiveObject.AddExecuteObject(_cameraController);
 
-            _inputController = new InputController(reference.PlayerBall);
+            _inputController = new InputController(_reference.PlayerBall);
             _interactiveObject.AddExecuteObject(_inputController);
 
+            this._reference.RestartButton.onClick.AddListener(this.RestartGame);
+            _reference.RestartButton.gameObject.SetActive(false);
 
             foreach (var item in _interactiveObject)
             {
@@ -80,7 +83,7 @@ namespace GeekBrains
 
         public void RestartGame()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(_numberOfScene);
             Time.timeScale = 1.0f;
         }
 
@@ -108,6 +111,7 @@ namespace GeekBrains
 
         private void CaughtPlayer(string value, Color args)
         {
+            _reference.RestartButton.gameObject.SetActive(true);
             Time.timeScale = 0.0f;
         }
 
