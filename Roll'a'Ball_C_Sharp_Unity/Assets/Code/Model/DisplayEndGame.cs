@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -18,7 +19,7 @@ namespace GeekBrains
         public DisplayEndGame(GameObject endGame)
         {
             _finishGameLabel = endGame.GetComponentInChildren<Text>();
-            _finishGameLabel.text = string.Empty;
+            _finishGameLabel.text = String.Empty;
         }
 
         #endregion

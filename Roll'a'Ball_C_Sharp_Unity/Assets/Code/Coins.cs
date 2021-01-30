@@ -29,7 +29,7 @@ namespace GeekBrains
         {
             _material = GetComponent<Renderer>().material;
             _lengthFlay = Range(_minRange, _maxRange);
-            _displayBonuses = new DisplayBonuses();
+            //_displayBonuses = new DisplayBonuses();
         }
 
         private void OnTriggerEnter(Collider other)

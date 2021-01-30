@@ -7,17 +7,7 @@ namespace GeekBrains
     {
         #region Properties
 
-        public float Speed
-        {
-            get
-            {
-                return _speed;
-            }
-            set
-            {
-                _speed = value;
-            }
-        }
+        public float Speed { get; set; } = 3.0f;
 
         #endregion
 
@@ -26,7 +16,6 @@ namespace GeekBrains
 
         public const string HorizontalInput = "Horizontal";
         public const string VerticalInput = "Vertical";
-        private float _speed = 3.0f;
 
         #endregion
 
@@ -35,7 +24,7 @@ namespace GeekBrains
 
         public PlayerBase(float speed)
         {
-            _speed = speed;
+            Speed = speed;
         }
 
         public PlayerBase()

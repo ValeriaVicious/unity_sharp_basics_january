@@ -19,7 +19,7 @@ namespace GeekBrains
         public DisplayBonuses(GameObject coin)
         {
             _coinLabel = coin.GetComponentInChildren<Text>();
-            _coinLabel.text = string.Empty;
+            _coinLabel.text = String.Empty;
         }
 
         #endregion

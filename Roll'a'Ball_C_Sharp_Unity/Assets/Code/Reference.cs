@@ -14,7 +14,7 @@ namespace GeekBrains
         private GameObject _endGame;
         private Canvas _canvas;
         private Button _restartButton;
-        private string _pathCoin = "UI/Bonuse";
+        private string _pathCoin = "UI/CoinCurrent";
         private string _pathEndGame = "UI/EndGame";
         private string _pathButton = "UI/RestartButton";
 
@@ -27,7 +27,7 @@ namespace GeekBrains
         {
             get
             {
-                if (_restartButton==null)
+                if (_restartButton == null)
                 {
                     var gameObject = Resources.Load<Button>(_pathButton);
                     _restartButton = Object.Instantiate(gameObject, Canvas.transform);
@@ -40,7 +40,7 @@ namespace GeekBrains
         {
             get
             {
-                if(_canvas == null)
+                if (_canvas == null)
                 {
                     _canvas = Object.FindObjectOfType<Canvas>();
                 }
@@ -52,7 +52,7 @@ namespace GeekBrains
         {
             get
             {
-                if(_coin == null)
+                if (_coin == null)
                 {
                     var gameObject = Resources.Load<GameObject>(_pathCoin);
                     _coin = Object.Instantiate(gameObject, Canvas.transform);
@@ -65,9 +65,10 @@ namespace GeekBrains
         {
             get
             {
-                if(_endGame == null)
+                if (_endGame == null)
                 {
                     var gameObject = Resources.Load<GameObject>(_pathEndGame);
+                    _endGame = Object.Instantiate(gameObject, Canvas.transform);
                 }
                 return _endGame;
             }
@@ -77,7 +78,7 @@ namespace GeekBrains
         {
             get
             {
-                if(_playerBall == null)
+                if (_playerBall == null)
                 {
                     var gameObject = Resources.Load<PlayerBall>(InteractiveObjects.PlayerTag);
                     _playerBall = Object.Instantiate(gameObject);
@@ -90,7 +91,7 @@ namespace GeekBrains
         {
             get
             {
-                if(_mainCamera == null)
+                if (_mainCamera == null)
                 {
                     _mainCamera = Camera.main;
                 }

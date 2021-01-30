@@ -15,7 +15,6 @@ namespace GeekBrains
         public int Point;
 
         private PlayerBase _player;
-        private Material _material;
         private float _speedRotation;
         private float _lengthFlay;
         private float _speedMax = 6.0f;
@@ -31,7 +30,6 @@ namespace GeekBrains
 
         private void Awake()
         {
-            _material = GetComponent<Renderer>().material;
             _lengthFlay = Range(_minFlayRange, _maxFlayRange);
             _speedRotation = Range(_minRotationRange, _maxRotationRange);
         }
@@ -53,8 +51,8 @@ namespace GeekBrains
 
         protected override void Interaction()
         {
+            _player.Speed = _speedMax;//just not working
             OnPointChange.Invoke(Point);
-            _player.Speed = _speedMax;
         }
 
         public void RotationObject()
@@ -76,13 +74,6 @@ namespace GeekBrains
             }
             Flay();
             RotationObject();
-            Flicker();
-        }
-
-        private void Flicker()
-        {
-            _material.color = new Color(_material.color.r, _material.color.g,
-                _material.color.b, Mathf.PingPong(Time.time, 1.0f));
         }
 
         #endregion

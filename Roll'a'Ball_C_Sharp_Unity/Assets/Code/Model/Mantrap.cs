@@ -33,6 +33,7 @@ namespace GeekBrains
             if (other.gameObject.CompareTag(PlayerTag))
             {
                 Log("I kill you!");
+                Interaction();
             }
         }
 
