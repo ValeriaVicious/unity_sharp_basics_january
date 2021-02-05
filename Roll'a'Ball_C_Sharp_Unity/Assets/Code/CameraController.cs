@@ -3,26 +3,31 @@
 
 namespace GeekBrains
 {
-    public class CameraController : MonoBehaviour
+    public class CameraController : IExecute
     {
         #region Fields
 
-        public Player Player;
+        private Transform _mainCamera;
+        private Transform _player;
         private Vector3 _offset;
 
         #endregion
 
 
-        #region UnityMethods
+        #region Methods
 
-        private void Start()
+        public void Execute()
         {
-            _offset = transform.position - Player.transform.position;
+            _mainCamera.position = _player.position + _offset;
         }
 
-        private void LateUpdate()
+
+        public CameraController(Transform player, Transform mainCamera)
         {
-            transform.position = Player.transform.position + _offset;
+            _player = player;
+            _mainCamera = mainCamera;
+            _mainCamera.LookAt(_player);
+            _offset = _mainCamera.position - _player.position;
         }
 
         #endregion
