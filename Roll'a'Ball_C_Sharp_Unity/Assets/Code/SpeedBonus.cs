@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using static UnityEngine.Debug;
+using static UnityEngine.Random;
 
 
 namespace GeekBrains
@@ -9,7 +11,10 @@ namespace GeekBrains
 
         #region Fields
 
-        private Player _player;
+        public event Action<int> OnPointChange = delegate (int i) { };
+        public int Point;
+
+        private PlayerBase _player;
         private float _speedRotation;
         private float _lengthFlay;
         private float _speedMax = 6.0f;
@@ -25,9 +30,8 @@ namespace GeekBrains
 
         private void Awake()
         {
-            _player = new Player();
-            _lengthFlay = Random.Range(_minFlayRange, _maxFlayRange);
-            _speedRotation = Random.Range(_minRotationRange, _maxRotationRange);
+            _lengthFlay = Range(_minFlayRange, _maxFlayRange);
+            _speedRotation = Range(_minRotationRange, _maxRotationRange);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -36,7 +40,7 @@ namespace GeekBrains
             {
                 Log("Woohoo");
                 Interaction();
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
 
@@ -47,7 +51,8 @@ namespace GeekBrains
 
         protected override void Interaction()
         {
-            _player.Speed = _speedMax;
+            _player.Speed = _speedMax;//just not working
+            OnPointChange.Invoke(Point);
         }
 
         public void RotationObject()
@@ -59,6 +64,16 @@ namespace GeekBrains
         {
             transform.localPosition = new Vector3(transform.localPosition.x,
                 Mathf.PingPong(Time.time, _lengthFlay), transform.localPosition.z);
+        }
+
+        public override void Execute()
+        {
+            if (!IsInterectable)
+            {
+                return;
+            }
+            Flay();
+            RotationObject();
         }
 
         #endregion
