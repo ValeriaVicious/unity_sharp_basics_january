@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using static UnityEngine.Debug;
+using static UnityEngine.Random;
 
 
 namespace GeekBrains
 {
-    public sealed class Mantrap : InteractiveObjects, IFlay, IFlicker
+    public sealed class Mantrap : InteractiveObjects, IFlay, IFlicker, IExecute
     {
         #region Fields
+
+        public event Action<string, Color> OnCaughtPlayerChange = delegate (string str, Color color) { };
 
         private Material _material;
         private float _lengthFlay;
@@ -21,7 +25,7 @@ namespace GeekBrains
         private void Awake()
         {
             _material = GetComponent<Renderer>().material;
-            _lengthFlay = Random.Range(_minFlayRange, _maxFlayRange);
+            _lengthFlay = Range(_minFlayRange, _maxFlayRange);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -29,7 +33,7 @@ namespace GeekBrains
             if (other.gameObject.CompareTag(PlayerTag))
             {
                 Log("I kill you!");
-                Destroy(other.gameObject);
+                Interaction();
             }
         }
 
@@ -52,7 +56,17 @@ namespace GeekBrains
 
         protected override void Interaction()
         {
-            
+            OnCaughtPlayerChange.Invoke(gameObject.name, _color);
+        }
+
+        public override void Execute()
+        {
+            if (!IsInterectable)
+            {
+                return;
+            }
+            Flicker();
+            Flay();
         }
 
         #endregion
